@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Trayectoria</h2>
+
+  <div class="controls">
+    <button id="prevBtn" title="Anterior">◀</button>
+    <button id="pauseBtn" title="Pausa/Reanuda">⏸️</button>
+    <button id="nextBtn" title="Siguiente">▶</button>
+    <label for="speed">Velocidad</label>
+    <input id="speed" type="range" min="250" max="2000" step="250" value="1000">
+    <span id="last-update" class="muted"></span>
+  </div>
+
+  <div id="track-wrap">
+    <div id="track">
+      <!-- 10 puntos -->
+      <svg id="line" viewBox="0 0 1000 120" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="busGradient" x1="0" x2="1">
+            <stop offset="0%" stop-color="#2b8" />
+            <stop offset="100%" stop-color="#1766a6" />
+          </linearGradient>
+        </defs>
+        <line x1="50" y1="60" x2="950" y2="60" stroke="#d0d7df" stroke-width="6" stroke-linecap="round" />
+        {% for i in range(10) %}
+          {% set x = 50 + i * 100 %}
+          <circle class="stop" cx="{{x}}" cy="60" r="12" fill="#f0f3f7" stroke="#c3cbd6"></circle>
+        {% endfor %}
+
+        <!-- stylized bus -->
+        <g id="bus" transform="translate(50,40)" cursor="pointer">
+          <g id="bus-body">
+            <rect x="-36" y="-18" width="72" height="36" rx="6" fill="url(#busGradient)" stroke="#0e3a4a" stroke-width="1" />
+            <rect x="-28" y="-10" width="24" height="16" rx="2" fill="#fff" opacity="0.18" />
+            <rect x="6" y="-10" width="20" height="16" rx="2" fill="#fff" opacity="0.12" />
+            <circle cx="-18" cy="18" r="6" fill="#222" />
+            <circle cx="18" cy="18" r="6" fill="#222" />
+            <circle cx="-18" cy="18" r="3" fill="#888" />
+            <circle cx="18" cy="18" r="3" fill="#888" />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div id="popup" class="hidden">
+    <button id="close">✕</button>
+    <h3>Detecciones dentro del bus <span id="popup-count" class="muted"></span></h3>
+    <div id="popup-bus-wrap">
+      <svg id="popupBus" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="pBusGrad" x1="0" x2="1">
+            <stop offset="0%" stop-color="#2b8" />
+            <stop offset="100%" stop-color="#1766a6" />
+          </linearGradient>
+        </defs>
+        <rect id="popupBusRect" x="20" y="40" rx="16" ry="16" width="360" height="140" fill="url(#pBusGrad)" stroke="#0e3a4a"/>
+        <g id="popup-dots"></g>
+        <g id="popup-wheels">
+          <circle cx="100" cy="200" r="12" fill="#222" />
+          <circle cx="300" cy="200" r="12" fill="#222" />
+        </g>
+      </svg>
+      <div id="popup-tooltip" class="hidden"></div>
+    </div>
+  </div>
+
+  <p>Estado actual: <span id="state-text">Cargando...</span></p>
+
+{% endblock %}

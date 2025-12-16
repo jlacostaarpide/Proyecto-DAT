@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Reproducción de secuencia</h2>
+  <p class="muted">Carga una secuencia de snapshots y reproduce el movimiento del autobús a través de las paradas.</p>
+
+  <div class="controls card">
+    <button id="playPause">▶</button>
+    <button id="prev">◀</button>
+    <button id="next">▶</button>
+    <label for="speedRange">Velocidad</label>
+    <input id="speedRange" type="range" min="200" max="2000" step="100" value="800">
+    <span id="frameInfo" class="muted"></span>
+    <input id="fileUpload" type="file" accept="application/json">
+  </div>
+
+  <div id="player" class="card" style="margin-top:12px;padding:16px">
+    <svg id="playerLine" viewBox="0 0 1000 120" preserveAspectRatio="none">
+      <line x1="50" y1="60" x2="950" y2="60" stroke="#d0d7df" stroke-width="6" stroke-linecap="round" />
+      {% for i in range(10) %}
+        {% set x = 50 + i * 100 %}
+        <circle class="stop" cx="{{x}}" cy="60" r="12" fill="#f0f3f7" stroke="#c3cbd6"></circle>
+      {% endfor %}
+      <g id="playerBus" transform="translate(50,40)">
+        <g id="bus-body">
+          <rect x="-36" y="-18" width="72" height="36" rx="6" fill="url(#busGradient)" stroke="#0e3a4a" stroke-width="1" />
+          <rect x="-28" y="-10" width="24" height="16" rx="2" fill="#fff" opacity="0.18" />
+          <rect x="6" y="-10" width="20" height="16" rx="2" fill="#fff" opacity="0.12" />
+          <circle cx="-18" cy="18" r="6" fill="#222" />
+          <circle cx="18" cy="18" r="6" fill="#222" />
+          <circle cx="-18" cy="18" r="3" fill="#888" />
+          <circle cx="18" cy="18" r="3" fill="#888" />
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div style="display:flex;gap:12px;margin-top:12px">
+    <div id="sequenceList" class="card" style="flex:1;max-height:360px;overflow:auto;padding:8px"></div>
+    <div id="aggregates" class="card" style="width:360px;max-height:360px;overflow:auto;padding:8px">
+      <h4>Aggregados</h4>
+      <div id="stopsAggregate" class="muted"></div>
+      <h4 style="margin-top:8px">Trayectos (por HMAC)</h4>
+      <div id="journeys" style="font-family:monospace;font-size:13px"></div>
+    </div>
+  </div>
+
+  <script src="/static/sequence.js"></script>
+
+{% endblock %}

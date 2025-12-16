@@ -1,0 +1,12 @@
+[
+  {"current_stop":0,"stops":10,"hashes":["h_long_01","h_long_02","h_morn_aa"],"timestamp":"2025-12-16T11:59:00Z"},
+  {"current_stop":1,"stops":10,"hashes":["h_long_01","h_long_02","h_morn_aa","h_pick_01","h_pick_02"],"timestamp":"2025-12-16T11:59:12Z"},
+  {"current_stop":2,"stops":10,"hashes":["h_long_01","h_long_02","h_pick_01","h_pick_02","h_mid_11","h_mid_12"],"timestamp":"2025-12-16T11:59:24Z"},
+  {"current_stop":3,"stops":10,"hashes":["h_long_01","h_long_02","h_mid_11","h_mid_12","h_mid_13","h_mid_14","h_mid_15"],"timestamp":"2025-12-16T11:59:36Z"},
+  {"current_stop":4,"stops":10,"hashes":["h_long_01","h_long_02","h_mid_11","h_mid_12","h_mid_13","h_mid_14","h_mid_15","h_mid_16","h_center_01"],"timestamp":"2025-12-16T11:59:48Z"},
+  {"current_stop":5,"stops":10,"hashes":["h_long_01","h_long_02","h_mid_12","h_mid_13","h_mid_14","h_mid_15","h_mid_16","h_center_01","h_center_02"],"timestamp":"2025-12-16T12:00:00Z"},
+  {"current_stop":6,"stops":10,"hashes":["h_long_01","h_long_02","h_mid_13","h_mid_14","h_center_01","h_center_02","h_drop_01"],"timestamp":"2025-12-16T12:00:12Z"},
+  {"current_stop":7,"stops":10,"hashes":["h_long_01","h_long_02","h_center_01","h_drop_01","h_drop_02"],"timestamp":"2025-12-16T12:00:24Z"},
+  {"current_stop":8,"stops":10,"hashes":["h_long_01","h_long_02","h_last_01"],"timestamp":"2025-12-16T12:00:36Z"},
+  {"current_stop":9,"stops":10,"hashes":["h_long_01","h_long_02"],"timestamp":"2025-12-16T12:00:48Z"}
+]
